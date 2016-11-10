@@ -66,6 +66,8 @@
                     alpha:1];
     
     ///
+    
+    /////
 }
 
 - (void)setModel:(MVVMModel *)model{
