@@ -64,6 +64,8 @@
                     green:random()%256/255.0
                      blue:random()%256/255.0
                     alpha:1];
+    
+    ///
 }
 
 - (void)setModel:(MVVMModel *)model{

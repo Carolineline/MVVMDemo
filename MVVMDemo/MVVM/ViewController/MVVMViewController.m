@@ -43,6 +43,9 @@
                                  self.view.bounds.size.height)];
     }
     return _mvvmView;
+    
+    
+    
 }
 - (MVVMViewModel *)mvvmViewModel{
     if (!_mvvmViewModel) {
