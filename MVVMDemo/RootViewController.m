@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "MVVMViewController.h"
+
 static NSString *const rootViewControllerCellIdetifer = @"rootCellIdentifer";
 
 @interface RootViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -48,7 +49,6 @@ static NSString *const rootViewControllerCellIdetifer = @"rootCellIdentifer";
         cell = [[UITableViewCell alloc] initWithStyle
                 :UITableViewCellStyleSubtitle reuseIdentifier
                 :rootViewControllerCellIdetifer];
-        
     }
     cell.textLabel.text = @"请点击进入";
     return cell;

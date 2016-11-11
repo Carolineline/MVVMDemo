@@ -7,12 +7,15 @@
 //
 
 #import "MVVMViewController.h"
-#import "MVVMView.h"
 #import "MVVMViewModel.h"
 #import "MVVMTableViewDelegate.h"
 @interface MVVMViewController ()
 @property (strong, nonatomic) MVVMViewModel *mvvmViewModel;
-@property (strong, nonatomic) MVVMView *mvvmView;
+@property (strong, nonatomic) MVVMTableViewDelegate *listTableViewDelegateModel;
+
+@property (strong, nonatomic) UITableView *listTableView;
+@property (strong, nonatomic) NSMutableArray *dataArray;
+
 
 @end
 
@@ -24,11 +27,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"MVVM";
     //渲染视图
-    [self.view addSubview:self.mvvmView];
-    
+    [self.view addSubview:self.listTableView];
+
     //获取数据
-    NSMutableArray *array = [self.mvvmViewModel configMVVMModel];
-    _mvvmView.listTableViewDelegateModel.dataSource = array;
+    self.listTableViewDelegateModel.dataSource = self.dataArray;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,22 +39,49 @@
     // Dispose of any resources that can be recreated.
 }
 #pragma mark - getter Method
-- (MVVMView *)mvvmView{
-    if (!_mvvmView) {
-        _mvvmView = [[MVVMView alloc] initWithFrame
-                     :CGRectMake(0, 0, self.view.bounds.size.width,
-                                 self.view.bounds.size.height)];
-    }
-    return _mvvmView;
-    
-    
-    
-}
 - (MVVMViewModel *)mvvmViewModel{
     if (!_mvvmViewModel) {
         _mvvmViewModel = [[MVVMViewModel alloc] init];
     }
     return _mvvmViewModel;
 }
+
+- (UITableView *)listTableView{
+    if (!_listTableView) {
+        _listTableView = [[UITableView alloc] initWithFrame
+                          :CGRectMake(0, 0, self.view.bounds.size.width,
+                                      self.view.bounds.size.height) style
+                          :UITableViewStylePlain];
+        _listTableView.delegate = self.listTableViewDelegateModel;
+        _listTableView.dataSource = self.listTableViewDelegateModel;
+        
+    }
+    return _listTableView;
+}
+
+- (MVVMTableViewDelegate *)listTableViewDelegateModel{
+    if (!_listTableViewDelegateModel) {
+        _listTableViewDelegateModel = [[MVVMTableViewDelegate alloc] init];
+    }
+    return _listTableViewDelegateModel;
+}
+- (NSMutableArray *)dataArray{
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+        _dataArray = [self.mvvmViewModel configMVVMModel];
+
+    }
+    return _dataArray;
+}
+#pragma mark - note
+
+/**
+    对于ViewModel实际上是对model数据的处理：将model显示的数据转换为view可以显示的数据
+ 
+    对于封装view:要权衡这个view的复杂度，对controlelr冗余的影响
+ 
+    使用getter方法：懒加载，自定义该对象的属性，增强易读性
+ */
+
 
 @end

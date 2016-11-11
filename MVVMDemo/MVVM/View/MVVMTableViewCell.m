@@ -19,7 +19,6 @@
     return self;
 }
 
-
 - (void) createSubviews{
     [self.contentView addSubview:self.studentNameLabel];
     [self.contentView addSubview:self.studentAgeLabel];
@@ -64,8 +63,7 @@
                     green:random()%256/255.0
                      blue:random()%256/255.0
                     alpha:1];
-    
-    ///
+
 }
 
 - (void)setModel:(MVVMModel *)model{
@@ -75,4 +73,5 @@
         self.studentAgeLabel.text = model.age;
     }
 }
+
 @end

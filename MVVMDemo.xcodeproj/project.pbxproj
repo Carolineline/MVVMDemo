@@ -17,7 +17,6 @@
 		C98549D91DD04AC700274DC7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98549D81DD04AC700274DC7 /* RootViewController.m */; };
 		C98549E11DD0558A00274DC7 /* MVVMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98549E01DD0558A00274DC7 /* MVVMViewController.m */; };
 		C98549E41DD055BD00274DC7 /* MVVMViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C98549E31DD055BD00274DC7 /* MVVMViewModel.m */; };
-		C98549E71DD055D400274DC7 /* MVVMView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98549E61DD055D400274DC7 /* MVVMView.m */; };
 		C98549EA1DD055EC00274DC7 /* MVVMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C98549E91DD055EC00274DC7 /* MVVMModel.m */; };
 		C98549F31DD05EA600274DC7 /* MVVMTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C98549F21DD05EA600274DC7 /* MVVMTableViewDelegate.m */; };
 		C98549F61DD063B400274DC7 /* MVVMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C98549F51DD063B400274DC7 /* MVVMTableViewCell.m */; };
@@ -61,8 +60,6 @@
 		C98549E01DD0558A00274DC7 /* MVVMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVVMViewController.m; sourceTree = "<group>"; };
 		C98549E21DD055BD00274DC7 /* MVVMViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVVMViewModel.h; sourceTree = "<group>"; };
 		C98549E31DD055BD00274DC7 /* MVVMViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVVMViewModel.m; sourceTree = "<group>"; };
-		C98549E51DD055D400274DC7 /* MVVMView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVVMView.h; sourceTree = "<group>"; };
-		C98549E61DD055D400274DC7 /* MVVMView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVVMView.m; sourceTree = "<group>"; };
 		C98549E81DD055EC00274DC7 /* MVVMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVVMModel.h; sourceTree = "<group>"; };
 		C98549E91DD055EC00274DC7 /* MVVMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVVMModel.m; sourceTree = "<group>"; };
 		C98549F11DD05EA600274DC7 /* MVVMTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVVMTableViewDelegate.h; sourceTree = "<group>"; };
@@ -182,8 +179,6 @@
 		C98549DC1DD0548200274DC7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C98549E51DD055D400274DC7 /* MVVMView.h */,
-				C98549E61DD055D400274DC7 /* MVVMView.m */,
 				C98549F41DD063B400274DC7 /* MVVMTableViewCell.h */,
 				C98549F51DD063B400274DC7 /* MVVMTableViewCell.m */,
 			);
@@ -347,7 +342,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C98549EA1DD055EC00274DC7 /* MVVMModel.m in Sources */,
-				C98549E71DD055D400274DC7 /* MVVMView.m in Sources */,
 				C98549E11DD0558A00274DC7 /* MVVMViewController.m in Sources */,
 				C98549F61DD063B400274DC7 /* MVVMTableViewCell.m in Sources */,
 				C98549E41DD055BD00274DC7 /* MVVMViewModel.m in Sources */,
@@ -590,6 +584,7 @@
 				C98549D01DD04A6700274DC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C98549D11DD04A6700274DC7 /* Build configuration list for PBXNativeTarget "MVVMDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -598,6 +593,7 @@
 				C98549D31DD04A6700274DC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C98549D41DD04A6700274DC7 /* Build configuration list for PBXNativeTarget "MVVMDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -606,6 +602,7 @@
 				C98549D61DD04A6700274DC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
