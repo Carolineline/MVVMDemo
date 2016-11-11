@@ -72,6 +72,8 @@
         self.studentNameLabel.text = model.name;
         self.studentAgeLabel.text = model.age;
     }
+    
+    
 }
 
 @end
