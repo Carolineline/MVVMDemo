@@ -74,13 +74,4 @@
     }
 }
 
-#pragma mark - note
-
-/**
-    对于ViewModel实际上是对model数据的处理：将model显示的数据转换为view可以显示的数据
- 
-    对于封装view:要权衡这个view的复杂度，对controlelr冗余的影响
- 
-    使用getter方法：懒加载，自定义该对象的属性，增强易读性
- */
 @end
