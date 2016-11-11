@@ -9,7 +9,5 @@
 #import <UIKit/UIKit.h>
 @class MVVMTableViewDelegate;
 @interface MVVMView : UIView
-@property (strong, nonatomic) NSMutableArray *dataArray;
-@property (strong, nonatomic) MVVMTableViewDelegate *listTableViewDelegateModel;
 
 @end
