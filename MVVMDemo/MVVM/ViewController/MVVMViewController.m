@@ -32,6 +32,8 @@
     //获取数据
     self.listTableViewDelegateModel.dataSource = self.dataArray;
 
+    
+    //远程
 }
 
 - (void)didReceiveMemoryWarning {
