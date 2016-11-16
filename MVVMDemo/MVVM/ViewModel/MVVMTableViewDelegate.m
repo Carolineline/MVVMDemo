@@ -25,6 +25,13 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = self.dataSource[indexPath.row];
+    [[[cell.selectedButton.rac_command rac_willDeallocSignal] takeUntil:cell.rac_willDeallocSignal] subscribeNext:^(id x) {
+        if (!x) {
+            return;
+        }
+        cell.selectedButton.rac_command  = nil;
+
+    }];
     return cell;
 }
 

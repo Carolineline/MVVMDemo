@@ -9,6 +9,8 @@
 #import "MVVMViewController.h"
 #import "MVVMViewModel.h"
 #import "MVVMTableViewDelegate.h"
+#import "ReactiveCocoa.h"
+
 @interface MVVMViewController ()
 @property (strong, nonatomic) MVVMViewModel *mvvmViewModel;
 @property (strong, nonatomic) MVVMTableViewDelegate *listTableViewDelegateModel;
@@ -30,9 +32,8 @@
     [self.view addSubview:self.listTableView];
 
     //获取数据
-    self.listTableViewDelegateModel.dataSource = self.dataArray;
-
-    
+//    self.listTableViewDelegateModel.dataSource = self.dataArray;
+    [self bindData];
     //远程
 }
 
@@ -40,6 +41,23 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - 绑定数据
+- (void) bindData{
+
+    @weakify(self);
+    [RACObserve(self.mvvmViewModel, dataArray) subscribeNext:^(NSMutableArray *array) {
+        if(!array){
+            return ;
+        }
+        @strongify(self);
+        self.listTableViewDelegateModel.dataSource = array;
+        NSLog(@"data = %@",array);
+        [self.listTableView reloadData];
+        
+    }];
+}
+
+
 #pragma mark - getter Method
 - (MVVMViewModel *)mvvmViewModel{
     if (!_mvvmViewModel) {
@@ -70,7 +88,8 @@
 - (NSMutableArray *)dataArray{
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        _dataArray = [self.mvvmViewModel configMVVMModel];
+        
+//        _dataArray = [self.mvvmViewModel configMVVMModel];
 
     }
     return _dataArray;

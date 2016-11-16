@@ -31,6 +31,7 @@
         _studentNameLabel.frame = CGRectMake(20, 20, 100, 20);
         _studentNameLabel.font = [UIFont systemFontOfSize:18.0];
         _studentNameLabel.textColor = [UIColor blueColor];
+        RAC(_studentNameLabel, text) = RACObserve(self, model.name);
     }
     return _studentNameLabel;
 }
@@ -41,6 +42,7 @@
         _studentAgeLabel.frame = CGRectMake(150, 20, 100, 20);
         _studentAgeLabel.font = [UIFont systemFontOfSize:17];
         _studentAgeLabel.textColor = [UIColor lightGrayColor];
+        RAC(_studentAgeLabel, text) = RACObserve(self, model.age);
     }
     return _studentAgeLabel;
 }
@@ -51,13 +53,21 @@
         _selectedButton.frame  = CGRectMake(20, 100, 60, 30);
         [_selectedButton setTitle:@"选中" forState:UIControlStateNormal];
         [_selectedButton setBackgroundColor:[UIColor redColor]];
-        [_selectedButton addTarget:self action:@selector
-         (didSelectedButtonAction:) forControlEvents
-                                  :UIControlEventTouchUpInside];
+//        [_selectedButton addTarget:self action:@selector
+//         (didSelectedButtonAction) forControlEvents
+//                                  :UIControlEventTouchUpInside];
+        @weakify(self);
+        _selectedButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            @strongify(self);
+            [self didSelectedButtonAction];
+            return [RACSignal empty];
+            
+        }];
+        
     }
     return _selectedButton;
 }
-- (void)didSelectedButtonAction:(UIButton *)button{
+- (void)didSelectedButtonAction{
     self.contentView.backgroundColor =
     [UIColor colorWithRed:random()%256/255.0
                     green:random()%256/255.0
@@ -66,14 +76,15 @@
 
 }
 
-- (void)setModel:(MVVMModel *)model{
-    if (model) {
-        _model = model;
-        self.studentNameLabel.text = model.name;
-        self.studentAgeLabel.text = model.age;
-    }
-    
-    
-}
+
+//- (void)setModel:(MVVMModel *)model{
+//    if (model) {
+//        _model = model;
+//        self.studentNameLabel.text = model.name;
+//        self.studentAgeLabel.text = model.age;
+//    }
+//    
+//    
+//}
 
 @end

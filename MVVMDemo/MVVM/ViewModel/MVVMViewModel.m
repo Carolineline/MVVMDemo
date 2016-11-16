@@ -7,14 +7,48 @@
 //
 
 #import "MVVMViewModel.h"
+
 #import "MVVMModel.h"
 
+#import "ReactiveCocoa.h"
+
 @interface MVVMViewModel ()
+
+@property (strong, nonatomic) RACSignal *dataSignal;
 
 @end
 @implementation MVVMViewModel
 
-- (NSMutableArray *)configMVVMModel{
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        [self configMVVMModel];
+    }
+    return self;
+}
+
+- (void)configMVVMModel{
+    
+    [[self.dataSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(RACTuple *requestData) {
+//        NSLog(@"resguest = %@",requestData);
+//        NSDictionary *response;
+//        if (requestData.count) {
+//            response = requestData.first;
+//        }
+    }];
+
+}
+
+- (RACSignal *)dataSignal{
+    if (!_dataSignal) {
+        NSMutableArray *array = [self configData];
+    }
+    return _dataSignal;
+}
+
+
+
+- (NSMutableArray *) configData {
     self.dataArray = [NSMutableArray array];
     NSArray *array = @[@{@"name":@"小明", @"age":@"19"}, @{@"name":@"李阳", @"age":@"23"}, @{@"name":@"王五", @"age":@"25"}, @{@"name":@"刘宇", @"age":@"19"}, @{@"name":@"谢华", @"age":@"29"}];
     
@@ -23,10 +57,8 @@
         [model setValuesForKeysWithDictionary:modelDic];
         [self.dataArray addObject:model];
     }
-//    zkjx
-    
-    //first
-    
+
     return self.dataArray;
 }
+
 @end

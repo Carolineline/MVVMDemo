@@ -11,5 +11,5 @@
 @interface MVVMViewModel : NSObject
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
-- (NSMutableArray *)configMVVMModel;
+//- (NSMutableArray *)configMVVMModel;
 @end
