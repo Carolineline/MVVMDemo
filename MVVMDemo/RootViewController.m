@@ -50,7 +50,16 @@ static NSString *const rootViewControllerCellIdetifer = @"rootCellIdentifer";
                 :UITableViewCellStyleSubtitle reuseIdentifier
                 :rootViewControllerCellIdetifer];
     }
-    cell.textLabel.text = @"请点击进入";
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"MVVM_ReactiveCocoa";
+
+    }else if(indexPath.row == 1){
+        cell.textLabel.text = @"masonry";
+
+    }else{
+        cell.textLabel.text = @"请点击进入";
+
+    }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath

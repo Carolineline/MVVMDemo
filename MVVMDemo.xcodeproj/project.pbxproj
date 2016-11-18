@@ -22,6 +22,8 @@
 		C98549EA1DD055EC00274DC7 /* MVVMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C98549E91DD055EC00274DC7 /* MVVMModel.m */; };
 		C98549F31DD05EA600274DC7 /* MVVMTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C98549F21DD05EA600274DC7 /* MVVMTableViewDelegate.m */; };
 		C98549F61DD063B400274DC7 /* MVVMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C98549F51DD063B400274DC7 /* MVVMTableViewCell.m */; };
+		C99B74F51DDEDE9500FF7846 /* MasonryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99B74F41DDEDE9500FF7846 /* MasonryViewController.m */; };
+		C99B74F81DDEDF4C00FF7846 /* MenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C99B74F71DDEDF4C00FF7846 /* MenuButton.m */; };
 		F04B27C79212BB7492DC726B /* Pods_MVVMDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1816A94A8689D0D4F1F374A /* Pods_MVVMDemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +78,10 @@
 		C98549F21DD05EA600274DC7 /* MVVMTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVVMTableViewDelegate.m; sourceTree = "<group>"; };
 		C98549F41DD063B400274DC7 /* MVVMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVVMTableViewCell.h; sourceTree = "<group>"; };
 		C98549F51DD063B400274DC7 /* MVVMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVVMTableViewCell.m; sourceTree = "<group>"; };
+		C99B74F31DDEDE9500FF7846 /* MasonryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasonryViewController.h; sourceTree = "<group>"; };
+		C99B74F41DDEDE9500FF7846 /* MasonryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasonryViewController.m; sourceTree = "<group>"; };
+		C99B74F61DDEDF4C00FF7846 /* MenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuButton.h; sourceTree = "<group>"; };
+		C99B74F71DDEDF4C00FF7846 /* MenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuButton.m; sourceTree = "<group>"; };
 		E1816A94A8689D0D4F1F374A /* Pods_MVVMDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE5B2016F9BD8FA9A9A0F440 /* Pods_MVVMDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -156,6 +162,7 @@
 		C98549A31DD04A6700274DC7 /* MVVMDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C99B74EF1DDEDE6E00FF7846 /* Masonry */,
 				C98549DA1DD0548200274DC7 /* MVVM */,
 				C98549A71DD04A6700274DC7 /* AppDelegate.h */,
 				C98549A81DD04A6700274DC7 /* AppDelegate.m */,
@@ -243,6 +250,41 @@
 				C98549F21DD05EA600274DC7 /* MVVMTableViewDelegate.m */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C99B74EF1DDEDE6E00FF7846 /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				C99B74F01DDEDE6E00FF7846 /* MasonryModel */,
+				C99B74F11DDEDE6E00FF7846 /* MasonryView */,
+				C99B74F21DDEDE6E00FF7846 /* MasonryViewController */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
+		C99B74F01DDEDE6E00FF7846 /* MasonryModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MasonryModel;
+			sourceTree = "<group>";
+		};
+		C99B74F11DDEDE6E00FF7846 /* MasonryView */ = {
+			isa = PBXGroup;
+			children = (
+				C99B74F61DDEDF4C00FF7846 /* MenuButton.h */,
+				C99B74F71DDEDF4C00FF7846 /* MenuButton.m */,
+			);
+			path = MasonryView;
+			sourceTree = "<group>";
+		};
+		C99B74F21DDEDE6E00FF7846 /* MasonryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C99B74F31DDEDE9500FF7846 /* MasonryViewController.h */,
+				C99B74F41DDEDE9500FF7846 /* MasonryViewController.m */,
+			);
+			path = MasonryViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -534,8 +576,10 @@
 				C98549F61DD063B400274DC7 /* MVVMTableViewCell.m in Sources */,
 				C98549E41DD055BD00274DC7 /* MVVMViewModel.m in Sources */,
 				C98549A91DD04A6700274DC7 /* AppDelegate.m in Sources */,
+				C99B74F51DDEDE9500FF7846 /* MasonryViewController.m in Sources */,
 				C98549A61DD04A6700274DC7 /* main.m in Sources */,
 				C98549F31DD05EA600274DC7 /* MVVMTableViewDelegate.m in Sources */,
+				C99B74F81DDEDF4C00FF7846 /* MenuButton.m in Sources */,
 				C98549D91DD04AC700274DC7 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
