@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "ReactiveCocoa.h"
 @interface MVVMViewModel : NSObject
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
-//- (NSMutableArray *)configMVVMModel;
+- (RACSignal *)configMVVMModelDataSignal;
+
 @end

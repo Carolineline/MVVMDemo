@@ -31,10 +31,8 @@
     //渲染视图
     [self.view addSubview:self.listTableView];
 
-    //获取数据
-//    self.listTableViewDelegateModel.dataSource = self.dataArray;
+    //获取数据（一般要先绑定数据源，再请求数据）
     [self bindData];
-    //远程
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,17 +42,34 @@
 #pragma mark - 绑定数据
 - (void) bindData{
 
+    /**
+     方法一：
+     @weakify(self);
+     [RACObserve(self.mvvmViewModel, dataArray) subscribeNext:^(NSMutableArray *array) {
+     if(!array){
+     return ;
+     }
+     @strongify(self);
+     self.listTableViewDelegateModel.dataSource = array;
+     NSLog(@"data = %@",array);
+     [self.listTableView reloadData];
+     
+     }];
+     */
+    
+    //方法二
     @weakify(self);
-    [RACObserve(self.mvvmViewModel, dataArray) subscribeNext:^(NSMutableArray *array) {
-        if(!array){
+    RACSignal *dataSignal = [self.mvvmViewModel configMVVMModelDataSignal];
+    [dataSignal subscribeNext:^(NSMutableArray *dataArray) {
+        if(!dataArray){
             return ;
         }
         @strongify(self);
-        self.listTableViewDelegateModel.dataSource = array;
-        NSLog(@"data = %@",array);
+        self.listTableViewDelegateModel.dataSource = dataArray;
         [self.listTableView reloadData];
-        
     }];
+    
+   
 }
 
 
@@ -89,8 +104,6 @@
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
         
-//        _dataArray = [self.mvvmViewModel configMVVMModel];
-
     }
     return _dataArray;
 }
@@ -105,4 +118,9 @@
  */
 
 
+/**
+    RAC监听数据
+    方法1.利用KVO,RACObserve(self.mvvmViewModel, dataArray)
+    方法2.根据暴露的信号，订阅信号，接收返回的数据
+ */
 @end
