@@ -11,4 +11,5 @@
 @interface MenuButton : UIButton
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UILabel *noteLabel;
+
 @end

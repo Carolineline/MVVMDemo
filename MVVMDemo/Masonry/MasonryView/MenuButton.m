@@ -7,7 +7,11 @@
 //
 
 #import "MenuButton.h"
-#import <UIKit/UIKit.h>
+#import "Masonry.h"
+
+@interface MenuButton ()
+@property (nonatomic, strong) UIView *backView;
+@end
 
 @implementation MenuButton
 
@@ -21,8 +25,11 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
-    if (!self) {
-        
+    if (self) {
+        [self addSubview:self.backView];
+        [self.backView addSubview:self.iconImageView];
+        [self.backView addSubview:self.noteLabel];
+        [self updateConstraints];
     }
     return self;
 }
@@ -34,12 +41,48 @@
 
 -(void)updateConstraints{
     
+    [self.backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.mas_centerY);
+        make.left.equalTo(self.mas_left);
+        make.top.equalTo(self.mas_top).offset(16);
+        make.height.equalTo(@(51.5));
+        
+    }];
+
+    [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.backView.mas_centerX);
+        make.top.equalTo(self.backView.mas_top);
+        
+    }];
+    
+    [self.noteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.iconImageView.mas_centerX);
+        make.bottom.equalTo(self.backView.mas_bottom).offset(0);
+        
+    }];
+    
+    [self.iconImageView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.iconImageView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    
+    [self.noteLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.noteLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    
+    
+    [super updateConstraints];
 }
 
+-(UIView *)backView{
+    if (!_backView) {
+        _backView = [[UIView alloc] init];
+        _backView.backgroundColor = [UIColor lightGrayColor];
+        
+    }
+    return _backView;
+}
 -(UIImageView *)iconImageView{
     if (!_iconImageView) {
         _iconImageView = [[UIImageView alloc] init];
-        _iconImageView.backgroundColor = [UIColor redColor];
+//        _iconImageView.backgroundColor = [UIColor redColor];
     }
     return _iconImageView;
 }

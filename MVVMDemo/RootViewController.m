@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 #import "MVVMViewController.h"
-
+#import "MasonryViewController.h"
 static NSString *const rootViewControllerCellIdetifer = @"rootCellIdentifer";
 
 @interface RootViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -36,10 +36,16 @@ static NSString *const rootViewControllerCellIdetifer = @"rootCellIdentifer";
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath
                   :(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    MVVMViewController *mvvmViewController = [[MVVMViewController alloc] init];
-    [self.navigationController pushViewController:mvvmViewController animated
-                                                 :YES];
+    if (indexPath.row == 0) {
+        MVVMViewController *mvvmViewController = [[MVVMViewController alloc] init];
+        [self.navigationController pushViewController:mvvmViewController animated
+                                                     :YES];
+    }else{
+        MasonryViewController *masonryViewController = [[MasonryViewController alloc] init];
+        [self.navigationController pushViewController:masonryViewController animated
+                                                     :YES];
+    }
+    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath
                               :(NSIndexPath *)indexPath{
@@ -54,7 +60,7 @@ static NSString *const rootViewControllerCellIdetifer = @"rootCellIdentifer";
         cell.textLabel.text = @"MVVM_ReactiveCocoa";
 
     }else if(indexPath.row == 1){
-        cell.textLabel.text = @"masonry";
+        cell.textLabel.text = @"Masonry";
 
     }else{
         cell.textLabel.text = @"请点击进入";

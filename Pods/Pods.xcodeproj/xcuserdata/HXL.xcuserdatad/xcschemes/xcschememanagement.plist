@@ -14,16 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MVVMDemoTests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-MVVMDemoUITests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>ReactiveCocoa.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,27 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>231CF21187D1B57F1458EE3A662D1F8C</key>
+		<key>55C1B0D920072CDD3EF5949AE96C5D33</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>361C3A9D2FFC10558C13D65FD03183C8</key>
+		<key>9166C90AFFFE9DA969A4F2B23B753370</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6ECD09D7E760EF5721857FBDA2C67828</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D52144DE9D7255DE912490FF5A806573</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EF23C6E5CED6C82D6361013FAAC75E56</key>
+		<key>9DC8D9E02903E93BD0B2FEC9D846EA20</key>
 		<dict>
 			<key>primary</key>
 			<true/>
