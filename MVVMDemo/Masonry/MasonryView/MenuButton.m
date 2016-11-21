@@ -29,35 +29,33 @@
         [self addSubview:self.backView];
         [self.backView addSubview:self.iconImageView];
         [self.backView addSubview:self.noteLabel];
-        [self updateConstraints];
+        [self updatesubViewConstraints];
     }
     return self;
 }
 
 
-+ (BOOL)requiresConstraintBasedLayout {
-    return YES;
-}
 
--(void)updateConstraints{
+
+-(void)updatesubViewConstraints{
     
     [self.backView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.mas_centerY);
-        make.left.equalTo(self.mas_left);
-        make.top.equalTo(self.mas_top).offset(16);
-        make.height.equalTo(@(51.5));
+        make.edges.equalTo(self);
         
     }];
 
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.backView.mas_centerX);
-        make.top.equalTo(self.backView.mas_top);
+        make.left.right.equalTo(self.backView);
+        make.width.height.equalTo(@(32));
+        make.top.equalTo(self.backView.mas_top).offset(0);
+        
         
     }];
     
     [self.noteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.iconImageView.mas_centerX);
-        make.bottom.equalTo(self.backView.mas_bottom).offset(0);
+        make.top.equalTo(self.iconImageView.mas_bottom).offset(4.5);
+        make.bottom.equalTo(self.backView);
         
     }];
     
@@ -74,7 +72,7 @@
 -(UIView *)backView{
     if (!_backView) {
         _backView = [[UIView alloc] init];
-        _backView.backgroundColor = [UIColor lightGrayColor];
+//        _backView.backgroundColor = [UIColor lightGrayColor];
         
     }
     return _backView;
@@ -82,7 +80,6 @@
 -(UIImageView *)iconImageView{
     if (!_iconImageView) {
         _iconImageView = [[UIImageView alloc] init];
-//        _iconImageView.backgroundColor = [UIColor redColor];
     }
     return _iconImageView;
 }
@@ -93,4 +90,11 @@
     }
     return _noteLabel;
 }
+
+
+/**
+    1.整个按钮由子视图撑开，即被包裹住的子视图觉得父视图
+    2.因此backView 是由iamgeView和label的间隔，上下间距 和 抱紧的imageView的大小决定的宽度和长度所撑开
+    3.若视图布局的时候没有限制约束优先级，而子视图的约束撑开了父视图的约束，则会发生约束冲突
+ */
 @end

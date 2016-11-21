@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSMutableArray *widthConstraints;
 @property (strong, nonatomic) NSArray *xArray;
 
+#define UIScreenWidth   [UIScreen mainScreen].bounds.size.width
 
 @end
 
@@ -34,7 +35,7 @@
     self.title = @"Masonry";
     
     [self.view addSubview:self.backView];
-    [self updateViewConstraints];
+    [self updateSubViewConstraints];
     [self initButtonsView];
     
     
@@ -54,26 +55,38 @@
 
     }
     
+    
+    __block UIView *spaceView = nil;
+    __block UIView *lastView = nil;
+    CGFloat width = UIScreenWidth/375 * 44.4;
+    
     [_buttonsArray enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL * _Nonnull stop) {
+            spaceView = [[UIView alloc] init];
+            [self.backView addSubview:spaceView];
+            [spaceView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.equalTo(self.backView);
+                make.left.equalTo(lastView ? lastView.mas_right : self.backView.mas_left);
+                make.width.height.mas_equalTo(width);
+                
+            }];
+
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             
-            make.height.equalTo(self.backView.mas_height);
-            CGFloat centerX = [self.xArray[idx] floatValue];
-            NSLog(@" idx = %ld centerX = %f",idx,centerX);
-            make.centerX.mas_equalTo(@(centerX));
-            make.centerY.equalTo(view.superview.mas_centerY);
-            NSLog(@"frame1 = %@",NSStringFromCGRect(view.frame));
+            make.centerY.equalTo(self.backView);
+            make.left.equalTo(spaceView.mas_right);
 
         }];
+       lastView = view;
     }];
-    
+
 }
 
-+ (BOOL)requiresConstraintBasedLayout {
-    return YES;
-}
+/**
+    要确定视图的x,y坐标
+    利用创建中间变量spaceView，来获得view起始的left，保存lastView的坐标，改变spaceview的坐标即可
+*/
 
-- (void)updateViewConstraints{
+- (void)updateSubViewConstraints{
     [self.backView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left).offset(12.5);
         make.top.equalTo(self.view.mas_top).offset(150);
