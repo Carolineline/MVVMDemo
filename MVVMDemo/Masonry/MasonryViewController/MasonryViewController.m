@@ -58,24 +58,50 @@
     
     __block UIView *spaceView = nil;
     __block UIView *lastView = nil;
-    CGFloat width = UIScreenWidth/375 * 44.4;
-    
+    CGFloat width1 = UIScreenWidth/375 * 38;
+    CGFloat width2 = UIScreenWidth/375 * 49.5;
+
     [_buttonsArray enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx == 0) {
             spaceView = [[UIView alloc] init];
             [self.backView addSubview:spaceView];
             [spaceView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(self.backView);
                 make.left.equalTo(lastView ? lastView.mas_right : self.backView.mas_left);
-                make.width.height.mas_equalTo(width);
+                make.width.height.mas_equalTo(width1);
+                
+            }];
+            [view mas_makeConstraints:^(MASConstraintMaker *make) {
+                
+                make.centerY.equalTo(self.backView);
+                make.left.equalTo(spaceView.mas_right);
                 
             }];
 
-        [view mas_makeConstraints:^(MASConstraintMaker *make) {
-            
-            make.centerY.equalTo(self.backView);
-            make.left.equalTo(spaceView.mas_right);
+        }else{
+            spaceView = [[UIView alloc] init];
+            [self.backView addSubview:spaceView];
+            [spaceView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.equalTo(self.backView);
+                make.left.equalTo(lastView ? lastView.mas_right : self.backView.mas_left);
+                make.width.height.mas_equalTo(width2);
+                
+            }];
 
-        }];
+            [view mas_makeConstraints:^(MASConstraintMaker *make) {
+                
+                make.centerY.equalTo(self.backView);
+                make.left.equalTo(spaceView.mas_right);
+                
+            }];
+
+        }
+//        [view mas_makeConstraints:^(MASConstraintMaker *make) {
+//            
+//            make.centerY.equalTo(self.backView);
+//            make.left.equalTo(spaceView.mas_right);
+//
+//        }];
        lastView = view;
     }];
 
